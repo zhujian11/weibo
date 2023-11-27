@@ -12,6 +12,13 @@ use App\Models\User;
 
 class PasswordController extends Controller
 {
+    public function __construct()
+    {
+        // 对发送重设密码链接限流10分钟3次
+        $this->middleware('throttle:3,10', [
+            'only' => ['sendResetLinkEmail']
+        ]);
+    }
     //
     public function showLinkRequestForm()
     {
