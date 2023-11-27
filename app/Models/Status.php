@@ -9,6 +9,7 @@ class Status extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['content'];
     // 模型对应关系 指明一条微博属于一个用户
     public function user()
     {
